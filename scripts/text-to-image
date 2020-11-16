@@ -1,0 +1,6 @@
+#! /bin/sh
+resolution=`xdpyinfo | grep -oP 'dimensions:\s+\K\S+'`
+fontcolor=`cat $HDD_HOME/Documents/Programming/C/dwm/config.h | grep "font_norm\[\]" | cut -d "\"" -f 2`
+bgcolor=`cat $HDD_HOME/Documents/Programming/C/dwm/config.h | grep "col_gray1\[\]" | cut -d "\"" -f 2`
+
+convert -size $resolution xc:$bgcolor -font Courier-Bold -pointsize 16 -fill "$fontcolor" -draw "text 50,90 '$@'" image.png

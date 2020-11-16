@@ -1,0 +1,5 @@
+#! /bin/sh
+scriptsPath=$HDD_HOME/Documents/Programming/Scripting
+
+text-to-image "$(cat $scriptsPath/how-to)"
+set-background image.png

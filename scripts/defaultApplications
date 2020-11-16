@@ -1,0 +1,10 @@
+#! /bin/sh
+mimetypes=`cat mime-types`
+
+echo "default,mime-type"
+
+for mime in $mimetypes
+do
+	echo "$(xdg-mime query default $mime),$mime"
+done
+

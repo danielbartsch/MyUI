@@ -1,0 +1,2 @@
+#! /bin/sh
+smbclient -NL //192.168.1.239/ | grep "Disk" | sed 's/Disk.*//g;s/\s*//g'

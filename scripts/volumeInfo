@@ -1,0 +1,7 @@
+#! /bin/sh
+volume=`pamixer --get-volume`
+if [ "$volume" = "0" ]; then
+	echo "🔇"
+else
+	echo "🔈$volume"
+fi

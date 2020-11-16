@@ -1,0 +1,11 @@
+#! /bin/sh
+usedSystemCpuTicks=`vmstat --stats | grep "system cpu ticks" | cut -d "s" -f 1`
+usedUserLowPrioCpuTicks=`vmstat --stats | grep " nice user cpu ticks" | cut -d "n" -f 1`
+usedUserHighPrioCpuTicks=`vmstat --stats | grep "non-nice user cpu ticks" | cut -d "n" -f 1`
+idleCpuTicks=`vmstat --stats | grep "idle cpu ticks" | cut -d "i" -f 1`
+
+usedCpuTicks=`echo "scale=10; $usedSystemCpuTicks+$usedUserLowPrioCpuTicks+$usedUserHighPrioCpuTicks" | bc`
+totalCpuTicks=`echo "scale=10; $idleCpuTicks+$usedCpuTicks" | bc`
+cpuPercentage=`echo "scale=10; ($usedCpuTicks/$totalCpuTicks)*100" | bc`
+
+printf "%.2f" "$cpuPercentage"

@@ -1,0 +1,5 @@
+#! /bin/sh
+onSince=`uptime -s`
+onSinceTime=`echo ${onSince:10:6}`
+
+echo "$onSinceTime » `date +%H:%M`"

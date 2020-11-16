@@ -1,0 +1,11 @@
+#! /bin/sh
+
+songinfo=$(song_info)
+
+songinfo_exit_code="$?"
+
+if [ $songinfo_exit_code -eq 0 ]; then
+    echo " `song_info` │ `netStatus` │ `nettraf` │ RAM `ramUsage`% │ `temperature` │ `volumeInfo` │ `datum` │ `timeInfo`"
+else
+    echo " `netStatus` │ `nettraf` │ RAM `ramUsage`% │ `temperature 2> ~/.getStatusbarLog` │ `volumeInfo` │ `datum` │ `timeInfo`"
+fi

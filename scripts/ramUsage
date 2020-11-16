@@ -1,0 +1,7 @@
+#! /bin/sh
+usedMemory=`vmstat --stats --unit M | grep "used memory" | cut -d "M" -f 1`
+totalMemory=`vmstat --stats --unit M | grep "total memory" | cut -d "M" -f 1`
+
+memoryPercentage=`echo "scale=10; $usedMemory/$totalMemory*100" | bc`
+
+printf "%.2f" "$memoryPercentage"

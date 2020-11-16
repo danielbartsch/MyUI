@@ -1,0 +1,8 @@
+#! /bin/sh
+LOWEST=`sensors -A | grep -Eo ":\s+\+[0-9]+\.[0-9]+°C" | grep -Eo "[0-9]+\.[0-9]+" --color=never | sort | head -n 1`
+HIGHEST=`sensors -A | grep -Eo ":\s+\+[0-9]+\.[0-9]+°C" | grep -Eo "[0-9]+\.[0-9]+" --color=never | sort -r | head -n 1`
+SUM=`sensors -A | grep -Eo ":\s+\+[0-9]+\.[0-9]+°C" | grep -Eo "[0-9]+\.[0-9]+" --color=never | paste -sd+ | bc`
+COUNT=`sensors -A | grep -Eo ":\s+\+[0-9]+\.[0-9]+°C" | grep -Eo "[0-9]+\.[0-9]+" --color=never | wc -l`
+AVERAGE=`bc <<< "scale=1;$SUM / $COUNT"`
+
+echo "↓$LOWEST ↑$HIGHEST ⌀$AVERAGE °C"

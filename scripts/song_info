@@ -1,0 +1,18 @@
+#! /bin/sh
+# end if above command isn't successful (eg. there's no mpv with a unix socket running)
+echo '{ "command": ["get_property_string", "seeking"] }' | socat - UNIX-CONNECT:/tmp/mpv-socket > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+	exit "10"
+fi
+
+POSITION=$(echo '{ "command": ["get_property_string", "time-pos"] }' | socat - UNIX-CONNECT:/tmp/mpv-socket | jq .data | tr '"' ' ' | cut -d'.' -f 1)
+FILENAME=$(echo '{ "command": ["get_property_string", "filename"] }' | socat - UNIX-CONNECT:/tmp/mpv-socket | jq .data | tr '"' ' ')
+DURATION=$(echo '{ "command": ["get_property_string", "duration"] }' | socat - UNIX-CONNECT:/tmp/mpv-socket | jq .data | tr '"' ' ' | cut -d'.' -f 1)
+
+POSITION_FORMATTED=$(printf '%02d:%02d' $(($POSITION%3600/60)) $(($POSITION%60)))
+DURATION_FORMATTED=$(printf '%02d:%02d' $(($DURATION%3600/60)) $(($DURATION%60)))
+
+echo "$FILENAME $POSITION_FORMATTED / $DURATION_FORMATTED"
+
+# get all available properties mpv has registered:
+# echo '{ "command": ["get_property", "property-list"] }' | socat - UNIX-CONNECT:/tmp/mpv-socket

@@ -1,0 +1,8 @@
+#! /bin/sh
+shares="$(nas-explore)"
+
+for share in $shares
+do
+	mkdir /media/nas/$share
+	echo "//192.168.1.239/$share	/media/nas/$share	cifs	cache=loose,credentials=/etc/samba/user.cred	0	0"
+done
