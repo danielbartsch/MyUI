@@ -1,0 +1,93 @@
+Trying libcrypto /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime/lib/i386-linux-gnu/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime/lib/i386-linux-gnu/libcrypto.so.1.0.0: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+Trying libcrypto /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime.old/lib/i386-linux-gnu/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime.old/lib/i386-linux-gnu/libcrypto.so.1.0.0: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+Trying libcrypto /home/daniel/.local/share/Steam/ubuntu12_32/steam-runtime.old/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /opt/resolve/libs/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /opt/resolve/libs/libcrypto.so.10
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /opt/teamspeak3/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /usr/lib/libcrypto.so
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /tmp/ccu0DL7g.o: in function `main':
+conftest.c:(.text+0xa): undefined reference to `SSLeay'
+collect2: error: ld returned 1 exit status
+Trying libcrypto /usr/lib/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /usr/lib/libcrypto.so.1.1
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /tmp/ccobQHNy.o: in function `main':
+conftest.c:(.text+0xa): undefined reference to `SSLeay'
+collect2: error: ld returned 1 exit status
+Trying libcrypto /usr/lib/openssl-1.0/libcrypto.so
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+Trying libcrypto /usr/lib32/libcrypto.so
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /usr/lib32/libcrypto.so: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+Trying libcrypto /usr/lib32/libcrypto.so.1.0.0
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /usr/lib32/libcrypto.so.1.0.0: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+Trying libcrypto /usr/lib32/libcrypto.so.1.1
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /usr/lib32/libcrypto.so.1.1: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+Trying libcrypto /usr/lib32/openssl-1.0/libcrypto.so
+conftest.c: In function 'main':
+conftest.c:2:32: warning: implicit declaration of function 'SSLeay' [-Wimplicit-function-declaration]
+    2 | int main(){printf("0x%08xL\n", SSLeay());}
+      |                                ^~~~~~
+/usr/bin/ld: /usr/lib32/openssl-1.0/libcrypto.so: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
