@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# making window manager work
+cp ./.xinitrc ~/.xinitrc
+cp ./.profile ~/.profile
+
+# extending shell
+cp ./.bashrc ~/.bashrc
+cp ./.bashInit ~/.bashInit
+cp ./.gitShortcuts ~/.gitShortcuts
+cp ./.vimrc ~/.vimrc

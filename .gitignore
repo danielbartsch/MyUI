@@ -1,0 +1,7 @@
+dwm/*.o
+dwm/dwm
+dwm/*.diff
+
+dmenu/*.o
+dmenu/dmenu
+dmenu/*.diff

@@ -1,0 +1,6 @@
+#! /bin/sh
+
+mv ~/.xinitrc ~/.xinitrc.bak
+mv ~/.bashrc ~/.bashrc.bak
+mv ~/.profile ~/.profile.bak
+mv ~/.vimrc ~/.vimrc.bak
