@@ -18,3 +18,4 @@ EDITOR=/usr/bin/vim
 
 [ -s "$HOME/.bashInit" ] && source "$HOME/.bashInit"
 [ -s "$HOME/.gitShortcuts" ] &&  source "$HOME/.gitShortcuts"
+[ -s "$HOME/.lfcd" ] && source "$HOME/.lfcd"
