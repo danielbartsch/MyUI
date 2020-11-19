@@ -8,4 +8,5 @@ cp ./.profile ~/.profile
 cp ./.bashrc ~/.bashrc
 cp ./.bashInit ~/.bashInit
 cp ./.gitShortcuts ~/.gitShortcuts
+cp ./.gitconfig ~/.gitconfig
 cp ./.vimrc ~/.vimrc
