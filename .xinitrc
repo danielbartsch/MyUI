@@ -8,4 +8,6 @@ done &
 #update-wallpaper-how-to
 set-background $HDD_HOME/Documents/blenderProjects/un/UN_vienna5_noise.png
 
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 exec dwm

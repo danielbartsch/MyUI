@@ -3,6 +3,7 @@
 # making window manager work
 cp ./.xinitrc ~/.xinitrc
 cp ./.profile ~/.profile
+cp ./.xprofile ~/.xprofile
 
 # extending shell
 cp ./.bashrc ~/.bashrc
