@@ -2,7 +2,7 @@
 /* Default settings; can be overriden by command line. */
 
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
-static int verticalmargin = 21;				/* starts/stops rendering this many pixels away from top/bottom */
+static int verticalmargin = 22;				/* starts/stops rendering this many pixels away from top/bottom */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"monospace:size=10"
