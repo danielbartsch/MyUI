@@ -10,5 +10,8 @@ cp ./.bashrc ~/.bashrc
 cp ./.bashInit ~/.bashInit
 cp ./.gitShortcuts ~/.gitShortcuts
 cp ./.gitconfig ~/.gitconfig
-cp ./.vimrc ~/.vimrc
 cp ./.commands/lfcd ~/.lfcd
+
+# configuration
+cp ./.alacritty.yml ~/.alacritty.yml
+cp ./.vimrc ~/.vimrc

@@ -6,3 +6,4 @@ mv ~/.profile ~/.profile.bak
 mv ~/.xprofile ~/.xprofile.bak
 mv ~/.vimrc ~/.vimrc.bak
 mv ~/.gitconfig ~/.gitconfig.bak
+mv ~/.alacritty.yml ~/.alacritty.yml.bak
