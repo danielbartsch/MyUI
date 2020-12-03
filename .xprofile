@@ -1,1 +1,2 @@
-xcompmgr &
+#xcompmgr &
+randr --output HDMI-A-0 --set TearFree on
