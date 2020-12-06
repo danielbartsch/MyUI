@@ -7,3 +7,5 @@ mv ~/.xprofile ~/.xprofile.bak
 mv ~/.vimrc ~/.vimrc.bak
 mv ~/.gitconfig ~/.gitconfig.bak
 mv ~/.alacritty.yml ~/.alacritty.yml.bak
+mv ~/.mozilla/firefox/profiles.ini ~/.mozilla/firefox/profiles.ini.bak
+mv ~/.mozilla/firefox/pe1v3uv9.default/chrome/userChrome.css ~/.mozilla/firefox/pe1v3uv9.default/chrome/userChrome.css.bak
