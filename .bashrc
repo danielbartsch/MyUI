@@ -4,6 +4,7 @@
 
 alias ls='ls --color=auto'
 alias ll='ls -al'
+alias cal='cal -m'
 
 teal="\[\e[36m\]"
 purple="\[\e[35m\]"
