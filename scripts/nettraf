@@ -9,9 +9,20 @@ txfile="${XDG_CACHE_HOME:-$HOME/.cache}/txlog"
 rxcurrent="$(cat /sys/class/net/*/statistics/rx_bytes | paste -sd '+' | bc)"
 txcurrent="$(cat /sys/class/net/*/statistics/tx_bytes | paste -sd '+' | bc)"
 
-printf "↓%s ↑%s KiB\\n" \
-	"$(printf -- "(%s-%s)/1024\\n" "$rxcurrent" "$(cat "$rxfile")" | bc)" \
-	"$(printf -- "(%s-%s)/1024\\n" "$txcurrent" "$(cat "$txfile")" | bc)"
+downloadPerSecond="$(printf -- "(%s-%s)/1024\\n" "$rxcurrent" "$(cat "$rxfile")" | bc)"
+uploadPerSecond="$(printf -- "(%s-%s)/1024\\n" "$txcurrent" "$(cat "$txfile")" | bc)"
+
+if [ $downloadPerSecond -ne 0 ]; then
+  printf "↓%s " "$downloadPerSecond"
+fi
+
+if [ $uploadPerSecond -ne 0 ]; then
+  printf "↑%s " "$uploadPerSecond"
+fi
+
+if [ $uploadPerSecond -ne 0 ] || [ $downloadPerSecond -ne 0 ]; then
+  printf "KiB\\n"
+fi
 
 # Log the current values for next run.
 echo "$rxcurrent" > "$rxfile"
