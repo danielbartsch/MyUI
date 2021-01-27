@@ -56,6 +56,9 @@ function gc { git commit -m "$@"; git status; }
 # git commit prepared for message ignoring evaluation
 function gcn { git commit -mn "$@"; git status; }
 
+# git history of a file
+alias gh="git log -p"
+
 # discarding unstaged file changes
 function discard {
   read -p "Are you sure you want to delete all unstaged changes? (y/n)" -n 1 -r
