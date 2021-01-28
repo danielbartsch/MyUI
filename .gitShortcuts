@@ -59,6 +59,11 @@ function gcn { git commit -mn "$@"; git status; }
 # git history of a file
 alias gh="git log -p"
 
+# blame a file by every line
+function blame {
+  git blame -s $@ | grep -E ".*[0-9]+\)"
+}
+
 # discarding unstaged file changes
 function discard {
   read -p "Are you sure you want to delete all unstaged changes? (y/n)" -n 1 -r
