@@ -26,5 +26,7 @@ cd lf-ueberzug && sudo -E make install && cd ../ && rm -rf lf-ueberzug
 # configuration
 cp ./.alacritty.yml ~/.alacritty.yml
 cp ./.vimrc ~/.vimrc
+cp ./.dunstrc ~/.config/dunst/dunstrc
 cp ./.firefoxProfiles.ini ~/.mozilla/firefox/profiles.ini
 cp ./.firefoxUserChrome.css ~/.mozilla/firefox/pe1v3uv9.default/chrome/userChrome.css
+
