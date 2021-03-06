@@ -6,6 +6,7 @@ PATH=$HOME/.fnm:$PATH
 PATH=$HOME/.dvm/1.6.0:$PATH
 PATH=$HOME/bin:$PATH
 PATH=$HDD_HOME/Documents/Programming/MyUI/scripts/:$PATH
+PATH=$HOME/go/bin:$PATH
 export PATH
 
 eval "`fnm env --multi`"

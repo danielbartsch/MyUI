@@ -12,6 +12,17 @@ cp ./.gitShortcuts ~/.gitShortcuts
 cp ./.gitconfig ~/.gitconfig
 cp ./.commands/lfcd ~/.lfcd
 
+reset="\033[0m";
+green="\033[1;32m";
+
+echo -e "${green}Downloading lf${reset}"
+env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf # installing lf
+
+echo -e "${green}Downloading lf-ueberzug for non-text previews${reset}"
+svn checkout https://github.com/slavistan/lf-gadgets/trunk/lf-ueberzug
+
+cd lf-ueberzug && sudo -E make install && cd ../ && rm -rf lf-ueberzug
+
 # configuration
 cp ./.alacritty.yml ~/.alacritty.yml
 cp ./.vimrc ~/.vimrc
