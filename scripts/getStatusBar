@@ -14,10 +14,15 @@ else
 fi
 
 netstatusreturn=$(netStatus)
+hasInternetreturn=$(hasInternet)
 if [ $netstatusreturn = "false" ]; then
   netstatusinfo=" OFFLINE │"
 else
-  netstatusinfo=""
+  if [ $hasInternetreturn = "false" ]; then
+    netstatusinfo=" NETWORK ONLY │"
+  else
+    netstatusinfo=""
+  fi
 fi
 
 echo "$songinfo$netstatusinfo$nettrafficinfo RAM `ramUsage`% │ `temperature`°C │ VOL `volumeInfo`% │ `datum` │ `timeInfo`"

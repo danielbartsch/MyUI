@@ -1,0 +1,9 @@
+#! /bin/sh
+
+wget -q --spider https://google.com --timeout=1;
+
+if [ $? -eq 0 ]; then
+	echo true
+else
+	echo false;
+fi
