@@ -6,7 +6,7 @@ do
   sleep 3
 done &
 #update-wallpaper-how-to
-set-background $HDD_HOME/Documents/blenderProjects/un/UN_vienna5_noise.png
+set-background $HDD_HOME/Documents/Media/blenderProjects/un/UN_vienna7_noise.png
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
