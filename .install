@@ -21,7 +21,7 @@ env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/
 echo -e "${green}Downloading lf-ueberzug for non-text previews${reset}"
 svn checkout https://github.com/slavistan/lf-gadgets/trunk/lf-ueberzug
 
-cd lf-ueberzug && sudo -E make install && cd ../ && rm -rf lf-ueberzug
+cd lf-ueberzug && sudo cp -t /usr/local/bin lf-ueberzug lf-ueberzug-cleaner lf-ueberzug-previewer && sudo mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/lf-ueberzug" && sudo cp lfrc-ueberzug "${XDG_CONFIG_HOME:-$HOME/.config}/lf-ueberzug" && cd ../ && rm -rf lf-ueberzug
 
 # configuration
 cp ./.alacritty.yml ~/.alacritty.yml
