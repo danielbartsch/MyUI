@@ -1,0 +1,13 @@
+#!/bin/sh
+
+netstatusreturn=$(netStatus)
+hasInternetreturn=$(hasInternet)
+if [ $netstatusreturn = "false" ]; then
+  echo "OFFLINE"
+else
+  if [ $hasInternetreturn = "false" ]; then
+    echo "NETWORK ONLY"
+  else
+    echo ""
+  fi
+fi

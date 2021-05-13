@@ -97,8 +97,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },
 	{ MODKEY,              XK_z,                    schemeCycle,         {0} },
-	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; xsetroot -name \"`getStatusBar`\"") },
-	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; xsetroot -name \"`getStatusBar`\"") },
+	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; pkill -RTMIN+1 dwmblocks") },
+	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; pkill -RTMIN+1 dwmblocks") },
 	{ 0,                   XK_Print,	            spawn,		    SHCMD("screenshot_clip") },
 	TAGKEYS(               XK_q,                    1)
 	TAGKEYS(               XK_d,                    2)
