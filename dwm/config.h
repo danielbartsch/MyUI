@@ -6,18 +6,25 @@ static const unsigned int snap      = 24;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" ,"Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=12";
-static const char col_gray1[]       = "#1e2021";
-static const char col_gray2[]       = "#33384D";
-static const char col_font_norm[]   = "#98A9C0";
-static const char col_font_bright[] = "#BBD1DA";
-static const char col_accent[]      = "#775451";
+static const char *fonts[]          = { "Pixel NES:size=12" ,"Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = {"Pixel NES:size=12"};
+static const char col_white1[]      = {"#e1dfde"};
+static const char col_white2[]      = {"#ccc7b4"};
+static const char col_gray1[]       = {"#1e2021"};
+static const char col_gray2[]       = {"#33384D"};
+static const char col_font_norm[]   = {"#98A9C0"};
+static const char col_font_bright[] = {"#BBD1DA"};
+static const char col_font_bright2[] ={"#DDDDDD"};
+
+static const char col_accent1[] = {"#775451"};
+static const char col_accent2[] = {"#4444DD"};
 
 static const char *colors[][3]      = {
-	/*               fg         bg          border   */
-	[SchemeNorm] = { col_font_norm, col_gray1,  col_gray2 },
-	[SchemeSel]  = { col_font_bright, col_accent, col_accent  },
+	/*fg               bg           border */
+	{ col_font_norm,   col_gray1,   col_gray2 },   // orig
+	{ col_font_bright, col_accent1, col_accent1 }, // orig
+	{ col_font_norm,   col_gray1,   col_gray2 },
+	{ col_font_bright2,col_accent2, col_accent2 },
 };
 
 /* tagging */
@@ -61,14 +68,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-b", "-l", "13", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_font_norm, "-sb", col_accent, "-sf", col_font_bright, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-b", "-l", "13", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_font_norm, "-sb", col_accent1, "-sf", col_font_bright, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_Print,                spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
-	{ MODKEY,              XK_b,                    togglebar,      {0} },
+	{ MODKEY,              XK_g,                    togglebar,      {0} },
 	{ MODKEY,              XK_Page_Up,              focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_Page_Down,            focusstack,     {.i = -1 } },
 	{ MODKEY,              XK_Left,                 incnmaster,     {.i = +1 } },
@@ -87,6 +94,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_period,               focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },
+	{ MODKEY,              XK_z,                    schemeCycle,         {0} },
 	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; xsetroot -name \"`getStatusBar`\"") },
 	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; xsetroot -name \"`getStatusBar`\"") },
 	{ 0,                   XK_Print,	            spawn,		    SHCMD("screenshot_clip") },
@@ -94,6 +102,8 @@ static Key keys[] = {
 	TAGKEYS(               XK_d,                    2)
 	TAGKEYS(               XK_r,                    3)
 	TAGKEYS(               XK_w,                    4)
+	TAGKEYS(               XK_b,                    5)
+	TAGKEYS(               XK_j,                    6)
 	{ MODKEY|ShiftMask,    XK_Escape,               quit,           {0} },
 };
 

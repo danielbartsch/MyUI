@@ -61,7 +61,6 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -201,6 +200,7 @@ static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
 static void run(void);
 static void scan(void);
+static void schemeCycle(const Arg*);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
@@ -283,6 +283,7 @@ static Atom wmatom[WMLast], netatom[NetLast];
 static int running = 1;
 static Cur *cursor[CurLast];
 static Clr **scheme;
+static int SchemeNorm = 0, SchemeSel = 1;
 static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
@@ -1559,6 +1560,21 @@ scan(void)
 			XFree(wins);
 	}
 	scanner = 0;
+}
+
+void
+schemeCycle(const Arg *arg) {
+
+	if ((SchemeSel + 2) < LENGTH(colors))
+	{
+		SchemeNorm += 2;
+		SchemeSel += 2;
+	} else {
+		SchemeNorm = 0;
+		SchemeSel = 1;
+	}
+
+	drawbars();
 }
 
 void
