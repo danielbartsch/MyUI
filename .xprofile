@@ -1,2 +1,1 @@
-#xcompmgr &
-randr --output HDMI-A-0 --set TearFree on
+export PATH=$HOME/.local/bin:$PATH

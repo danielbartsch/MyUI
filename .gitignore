@@ -5,3 +5,4 @@ dwm/*.diff
 dmenu/*.o
 dmenu/dmenu
 dmenu/*.diff
+dmenu/stest
