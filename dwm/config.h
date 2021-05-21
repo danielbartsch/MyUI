@@ -97,8 +97,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },
 	{ MODKEY,              XK_z,                    schemeCycle,         {0} },
-	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; pkill -RTMIN+1 dwmblocks") },
-	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; pkill -RTMIN+1 dwmblocks") },
+	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; pkill -RTMIN+2 dwmblocks") },
+	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; pkill -RTMIN+2 dwmblocks") },
 	{ 0,                   XK_Print,	            spawn,		    SHCMD("screenshot_clip") },
 	TAGKEYS(               XK_q,                    1)
 	TAGKEYS(               XK_d,                    2)
@@ -118,6 +118,8 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
