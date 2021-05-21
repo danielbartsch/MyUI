@@ -31,7 +31,7 @@ cursor:
 shell:
   program: /bin/bash
 mouse:
-  url:
+  hints:
     launcher:
       program: xdg-open
       args: []
