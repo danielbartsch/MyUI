@@ -6,7 +6,7 @@ static const unsigned int snap      = 24;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Pixel NES:size=12" ,"Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
+static const char *fonts[]          = { "Pixel NES:size=12" ,"JetBrains Mono:size=18", "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = {"Pixel NES:size=12"};
 static const char col_white1[]      = {"#e1dfde"};
 static const char col_white2[]      = {"#ccc7b4"};
@@ -28,7 +28,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "   ", "S", "U", "P", "E", "R", "!?" };
+static const char *tags[] = { "   ", "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
