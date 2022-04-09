@@ -1,0 +1,49 @@
+#!/bin/sh
+
+NINTENDO_SWITCH_EVENT="$(cat /proc/bus/input/devices | grep "Nintendo Switch Pro Controller\"" --after-context=4 | grep "Handlers" | sed "s/.*=//g;s/\s.*//g")"
+
+MANUAL_OVERRIDE="$1"
+
+if [ -z "$MANUAL_OVERRIDE" ]; then
+	EVENT="$NINTENDO_SWITCH_EVENT"
+else
+	EVENT="event$MANUAL_OVERRIDE"
+fi
+
+echo "Using \"/dev/input/$EVENT\""
+
+xboxdrv \
+        --evdev "/dev/input/$EVENT" \
+        --detach-kernel-driver \
+        --deadzone-trigger 15% \
+        --deadzone 4000 \
+        --mimic-xpad \
+        --trigger-as-button \
+        --device-name "Nintendo Switch Pro Controller (XboxDrv)" \
+        --axismap \
+-Y1=Y1,\
+-X2=Y2,\
+Y2=X2\
+        --evdev-absmap  \
+ABS_X=x1,\
+ABS_Y=y1,\
+ABS_RX=x2,\
+ABS_RY=y2,\
+ABS_HAT0X=dpad_x,\
+ABS_HAT0Y=dpad_y \
+        --evdev-keymap \
+BTN_SOUTH=a,\
+BTN_EAST=b,\
+BTN_C=x,\
+BTN_NORTH=y,\
+BTN_TL=lb,\
+BTN_TR=rb,\
+BTN_WEST=x,\
+BTN_Z=rb,\
+BTN_SELECT=back,\
+BTN_START=start,\
+BTN_MODE=guide,\
+BTN_THUMBR=tr,\
+BTN_THUMBL=tl,\
+BTN_TL2=lt,\
+BTN_TR2=rt
