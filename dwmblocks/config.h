@@ -5,6 +5,7 @@ static const Block blocks[] = {
 	{"",		"sb_network_traffic",			1,			0},
 	{"",		"sb_connection_status",			300,			0},
 	{"",		"sb_updates",				1800,			0},
+	{"",		"sb_controller_battery",		60,			0},
 	{"",		"sb_ram_usage",				60,			0},
 	{"",		"sb_weather",				300,			0},
 	{"",		"sb_temperature",			60,			0},

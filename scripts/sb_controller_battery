@@ -1,0 +1,14 @@
+#!/bin/sh
+
+nintendoSwitchProControllerBatteryStatus=$(upower -i `upower -e | grep "nintendo_switch_controller"` | grep "state:" | sed "s/\s*state:\s*//g")
+
+if [ -z $nintendoSwitchProControllerBatteryStatus ]; then
+  echo ""
+else
+  if [ $nintendoSwitchProControllerBatteryStatus = "fully-charged" ]; then
+    echo ""
+  else
+    nintendoSwitchProControllerBatteryPercentage=$(upower -i `upower -e | grep "nintendo_switch_controller"` | grep "percentage:" | sed "s/\s*percentage:\s*//g;s/\s.*//")
+    echo "NIN $nintendoSwitchProControllerBatteryPercentage"
+  fi
+fi
