@@ -1,5 +1,5 @@
 #! /bin/sh
-if [ "$(cat /sys/class/net/enp7s0/operstate)" = "up" ]; then
+if [ "$(cat /sys/class/net/eth0/operstate)" = "up" ]; then
 	echo true
 else
 	echo false

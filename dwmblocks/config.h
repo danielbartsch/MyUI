@@ -2,7 +2,7 @@
 static const Block blocks[] = {
 	/*Icon		Command					Update Interval		Update Signal*/
 	{"",        "echo \"\"", 0, 0},
-	{"",		"nettraf",				1,			0},
+	{"",		"sb_network_traffic",			1,			0},
 	{"",		"sb_connection_status",			300,			0},
 	{"",		"sb_updates",				1800,			0},
 	{"",		"sb_ram_usage",				60,			0},
@@ -10,7 +10,7 @@ static const Block blocks[] = {
 	{"",		"sb_temperature",			60,			0},
 	{"",		"sb_volume",				0,			2},
 	{"",		"sb_datum",				60,			0},
-	{"",		"timeInfo",				60,			0},
+	{"",		"sb_up_time",				60,			0},
 };
 
 //Sets delimiter between status commands. NULL character ('\0') means no delimiter.
