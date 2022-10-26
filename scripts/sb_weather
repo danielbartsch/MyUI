@@ -1,3 +1,9 @@
 #!/bin/sh
 
-curl -sf wttr.in/?format=%c%t+%w
+result=`curl -sf wttr.in/?format=%c%t+%w`
+
+check=$(echo "$result" | grep -E "^Unknown")
+
+if [ -z "$check" ]; then
+	echo "$result" | sed "s/+//"
+fi
