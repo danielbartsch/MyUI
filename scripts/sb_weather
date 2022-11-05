@@ -1,6 +1,6 @@
 #!/bin/sh
 
-result=`curl -sf wttr.in/?format=%c%t+%w`
+result=`curl -sf wttr.in/?format=%C%20%t+%w`
 
 check=$(echo "$result" | grep -E "^Unknown")
 
