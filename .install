@@ -14,6 +14,7 @@ cp ./.bashInit ~/.bashInit
 cp ./.gitShortcuts ~/.gitShortcuts
 cp ./.gitconfig ~/.gitconfig
 cp ./.commands/lfcd ~/.lfcd
+cp ./.commands/lfrc ~/.config/lf/lfrc
 
 reset="\033[0m";
 green="\033[1;32m";
@@ -37,3 +38,6 @@ cp ./.firefoxUserChrome.css ~/.mozilla/firefox/pe1v3uv9.default/chrome/userChrom
 cd ./dwm && sudo make clean install
 cd ../dwmblocks && sudo make clean install
 cd ../dmenu && sudo make clean install
+
+# moving executable scripts to path enabled directory
+cp ./.commands/dmenu_run_history ~/.local/bin
