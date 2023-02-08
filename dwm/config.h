@@ -28,7 +28,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
+static const char *tags[] = { "0", "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,7 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-b", "-l", "13", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_font_norm, "-sb", col_accent1, "-sf", col_font_bright, NULL };
+static const char *dmenucmd[] = { "dmenu_run_history", "-b", "-l", "13", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_font_norm, "-sb", col_accent1, "-sf", col_font_bright, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
@@ -88,10 +88,8 @@ static Key keys[] = {
 	{ MODKEY,              XK_Return,               zoom,           {0} },
 	{ MODKEY,              XK_Tab,                  view,           {0} },
 	{ MODKEY,              XK_Escape,               killclient,     {0} },
-	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,              XK_f,                    setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,              XK_space,                setlayout,      {0} },
-	{ MODKEY,	           XK_F11,					togglefullscr,	{0} },
+	{ MODKEY,	           XK_f,					togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
 	{ MODKEY,              XK_comma,                focusmon,       {.i = -1 } },
 	{ MODKEY,              XK_period,               focusmon,       {.i = +1 } },
@@ -101,12 +99,12 @@ static Key keys[] = {
 	{ 0,                   XF86XK_AudioRaiseVolume,	spawn,		    SHCMD("pamixer --allow-boost -i 1; pkill -RTMIN+2 dwmblocks") },
 	{ 0,                   XF86XK_AudioLowerVolume,	spawn,		    SHCMD("pamixer --allow-boost -d 1; pkill -RTMIN+2 dwmblocks") },
 	{ 0,                   XK_Print,	            spawn,		    SHCMD("screenshot_clip") },
-	TAGKEYS(               XK_q,                    1)
-	TAGKEYS(               XK_d,                    2)
-	TAGKEYS(               XK_r,                    3)
-	TAGKEYS(               XK_w,                    4)
-	TAGKEYS(               XK_b,                    5)
-	TAGKEYS(               XK_j,                    6)
+	TAGKEYS(               XK_q,                    0)
+	TAGKEYS(               XK_d,                    1)
+	TAGKEYS(               XK_r,                    2)
+	TAGKEYS(               XK_w,                    3)
+	TAGKEYS(               XK_b,                    4)
+	TAGKEYS(               XK_j,                    5)
 	{ MODKEY|ShiftMask,    XK_Escape,               quit,           {0} },
 };
 
