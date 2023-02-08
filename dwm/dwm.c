@@ -67,7 +67,7 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
 enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
-       ClkClientWin, ClkRootWin, ClkLast, ClkMenu }; /* clicks */
+       ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
 
 typedef union {
 	int i;
@@ -564,9 +564,7 @@ buttonpress(XEvent *e)
 		do
 			x += TEXTW(tags[i]);
 		while (ev->x >= x && ++i < LENGTH(tags));
-		if (i == 0)
-			click = ClkMenu;
-		else if (i < LENGTH(tags) + 1) {
+		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
 			arg.ui = 1 << i;
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
@@ -884,21 +882,12 @@ drawbar(Monitor *m)
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
-		if (i == 0) {
-			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
-			drw_rect(drw, x + w / 2, bh / 2, bh / 3, bh / 3, 1, 0);
-			drw_rect(drw, x + w / 2 - bh / 3, bh / 2 - bh / 3, bh / 3, bh / 3, 1, 0);
-			drw_rect(drw, x + w / 2 - 2 * bh / 3, bh / 2, bh / 3, bh / 3, 1, 0);
-			drw_rect(drw, x + w / 2 + bh / 3, bh / 2 - bh / 3, bh / 3, bh / 3, 1, 0);
-		} else {
-			drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-			if (occ & 1 << i)
-				drw_rect(drw, x + boxs, boxs, boxw, boxw,
-					m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-					urg & 1 << i);
-		}
+		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
+		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		if (occ & 1 << i)
+			drw_rect(drw, x + boxs, boxs, boxw, boxw,
+				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+				urg & 1 << i);
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);
@@ -1936,9 +1925,6 @@ setup(void)
 	XSelectInput(dpy, root, wa.event_mask);
 	grabkeys();
 	focus(NULL);
-
-	// set selected tag upon start
-	selmon->tagset[selmon->seltags] = 2;
 }
 
 void
@@ -2284,7 +2270,6 @@ updategeom(void)
 		selmon = mons;
 		selmon = wintomon(root);
 	}
-
 	return dirty;
 }
 
