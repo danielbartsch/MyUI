@@ -1,0 +1,17 @@
+#! /bin/sh
+
+files="$@"
+
+filesArray=($files)
+
+for i in "${!filesArray[@]}"; do
+
+  filename=$(basename -- "${filesArray[$i]}")
+  extension="${filename##*.}"
+
+  printf -v newName "%02d.%s" "$i" "$extension"
+
+  mv "${filesArray[$i]}" $newName
+done
+
+

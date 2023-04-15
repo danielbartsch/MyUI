@@ -1,0 +1,43 @@
+#! /bin/sh
+
+files="$@"
+
+for file in ${files[@]}
+do
+	if [ -f "$file" ]; then
+		# eg .jpg from iPhone 7 Plus
+		datetime="$(file "$file" | grep "datetime=" | sed "s/.*datetime=//g;s/].*//g;s/[:| ]//g")"
+
+		if [ -z $datetime ]; then
+			# eg .MOV from iPhone 7 Plus
+			datetime="$(exiftool -time:all "$file" | grep "Creation"  | sed "s/[.* :| ]//g;s/.*e//g;s/+.*//g")"
+		fi
+
+		filename=$(basename -- "$file")
+		dirname=$(dirname -- "$file")
+
+		extension="${filename##*.}"
+		extensionString=""
+
+		# if there is no extension
+		if [ $extension = $filename ]; then
+			extensionString=""
+		else
+			extensionString=".$extension"
+		fi
+
+		newfilename="${datetime}${extensionString}"
+		counter=$((1))
+
+		while [ -f "$dirname/$newfilename" ]
+		do
+			newfilename="${datetime}_${counter}${extensionString}"
+			counter=$((counter+1))
+		done
+
+		mv -n "$file" "$dirname/$newfilename"
+	else
+		echo "\"$dirname/$file\" does not exist"
+	fi
+done
+
