@@ -19,6 +19,11 @@ do
 			datetime="$(exiftool -time:all "$file" | grep "Creation"  | sed "s/.* ://g;s/^ //g;s/ /_/g;s/://g;s/.*e//g;s/+.*//g")"
 		fi
 
+		if [ -z $datetime ]; then
+			echo "Couldn't determine datetime: \"$file\""
+			continue;
+		fi
+
 		filename=$(basename -- "$file")
 		dirname=$(dirname -- "$file")
 
