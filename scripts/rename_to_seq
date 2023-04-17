@@ -4,14 +4,26 @@ files="$@"
 
 filesArray=($files)
 
+if [ "$1" = "--dry-run" ]; then
+	echo "--dry-run disables actual renaming and just shows you the result if it was actually done"
+fi
+
 for i in "${!filesArray[@]}"; do
+	if ! [ -d "${filesArray[$i]}" ]; then
+		filename=$(basename -- "${filesArray[$i]}")
+		dirname=$(dirname -- "${filesArray[$i]}")
+		extension="${filename##*.}"
 
-  filename=$(basename -- "${filesArray[$i]}")
-  extension="${filename##*.}"
+		printf -v newName "%02d.%s" "$i" "$extension"
 
-  printf -v newName "%02d.%s" "$i" "$extension"
-
-  mv "${filesArray[$i]}" $newName
+		if [ "$1" = "--dry-run" ]; then
+			echo "From: \"${filesArray[$i]}\""
+			echo "To  : \"$dirname/$newName\""
+			echo ""
+		else
+			mv "${filesArray[$i]}" "$dirname/$newName"
+		fi
+  	fi
 done
 
 
