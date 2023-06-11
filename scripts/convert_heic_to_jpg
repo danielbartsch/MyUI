@@ -1,0 +1,27 @@
+#! /bin/sh
+
+files="$@"
+
+filesArray=($files)
+
+if [ "$1" = "--dry-run" ]; then
+	echo "--dry-run disables actual conversion and just shows you the result if it was actually done"
+fi
+
+for i in "${!filesArray[@]}"; do
+	if ! [ -d "${filesArray[$i]}" ]; then
+		fullfilename=$(basename -- "${filesArray[$i]}")
+		dirname=$(dirname -- "${filesArray[$i]}")
+		filename="${fullfilename%%.*}"
+
+		if [ "$1" = "--dry-run" ]; then
+			echo "From: \"$dirname/$fullfilename\""
+			echo "To  : \"$dirname/$filename.jpg\""
+			echo ""
+		else
+			convert "$dirname/$fullfilename" "$dirname/$filename.jpg"
+		fi
+	fi
+done
+
+

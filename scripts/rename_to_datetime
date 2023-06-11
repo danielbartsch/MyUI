@@ -20,6 +20,11 @@ do
 		fi
 
 		if [ -z $datetime ]; then
+			# eg .HEIC from iPhone 7 Plus
+			datetime="$(exiftool -time:all "$file" | grep "Create Date" | head -n 1 | sed "s/.* ://g;s/^ //g;s/ /_/g;s/://g;s/.*e//g;s/+.*//g")"
+		fi
+
+		if [ -z $datetime ]; then
 			echo "Couldn't determine datetime: \"$file\""
 			continue;
 		fi
