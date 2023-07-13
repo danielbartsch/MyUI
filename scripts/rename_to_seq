@@ -14,7 +14,7 @@ for i in "${!filesArray[@]}"; do
 		dirname=$(dirname -- "${filesArray[$i]}")
 		extension="${filename##*.}"
 
-		printf -v newName "%02d.%s" "$i" "$extension"
+		printf -v newName "%04d.%s" "$i" "$extension"
 
 		if [ "$1" = "--dry-run" ]; then
 			echo "From: \"${filesArray[$i]}\""

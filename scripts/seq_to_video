@@ -1,20 +1,28 @@
 #! /bin/bash
 
 if [ -z $1 ]; then
-	echo 'First parameter must be fps (eg \"30\")'
+	echo 'Example usage: seq_to_video 60 1 png video'
+	echo '	results in reading a sequence of images in the current directory
+	starting from "0001.png", and outputting a video with the name "video.mp4"'
+	echo ''
+	echo 'Parameter 1 must be frames per second				(eg.: "30")'
 fi;
 
 if [ -z $2 ]; then
-	echo 'Second parameter must be the starting frame number (eg \"1\")'
+	echo ''
+	echo 'Parameter 2 must be the starting frame number			(eg.: "1")'
+	echo '	images must contain 4 digits, eg "4227.png"'
 fi
 
 if [ -z $3 ]; then
-	echo 'Third parameter must be the file extension of the sequence images (eg \"png\")'
+	echo ''
+	echo 'Parameter 3 must be the file extension of the images		(eg.: "png")'
 fi
 
 if [ -z $4 ]; then
-	echo 'Fourth parameter must be the output file name without file extension (eg \"output\")'
+	echo ''
+	echo 'Parameter 4 must be the output file name without file extension	(eg.: "output")'
 	exit
 fi
 
-ffmpeg -framerate "$1" -start_number "$2" -i %04d."$3" -c:v libx264 -pix_fmt yuv420p -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "$3.mp4"
+ffmpeg -framerate "$1" -start_number "$2" -i %04d."$3" -c:v libx264 -pix_fmt yuv420p -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "$4.mp4"
