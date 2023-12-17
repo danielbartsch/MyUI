@@ -40,4 +40,4 @@ cd ../dwmblocks && sudo make clean install
 cd ../dmenu && sudo make clean install
 
 # moving executable scripts to path enabled directory
-cp ./.commands/dmenu_run_history ~/.local/bin
+cp ./.commands/dmenu_run_history usr/local/bin
