@@ -1,0 +1,30 @@
+#!/bin/sh
+
+network="$(sb_network_traffic)"
+connection="$(cacheoutput 300 sb_connection_status)"
+updates="$(cacheoutput 600 sb_updates)"
+controller="$(cacheoutput 60 sb_controller_battery)"
+ram="$(cacheoutput 60 sb_ram_usage)"
+weather="$(cacheoutput 300 sb_weather)"
+temperature="$(cacheoutput 60 sb_temperature)"
+volume="$(sb_volume)"
+datum="$(cacheoutput 60 sb_datum)"
+up_time="$(cacheoutput 60 sb_up_time)"
+
+status_items=("$network" "$connection" "$updates" "$controller" "$ram" "$weather" "$temperature" "$volume" "$datum" "$up_time")
+
+for index in "${!status_items[@]}"; do
+	[[ "${status_items[$index]}" = "" ]] && unset -v 'status_items[$index]';
+done
+status_items=("${status_items[@]}")
+
+bar=""
+for index in "${!status_items[@]}"; do
+	if [ $index -eq 0 ]; then
+		bar="${status_items[$index]}"
+	else
+		bar="$bar │ ${status_items[$index]}"
+	fi
+done
+
+echo "$bar"
